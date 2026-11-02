@@ -17,7 +17,6 @@ body {
 
 .space-bg {
     min-height: 100vh;
-    /* Background position aur gradient fix kiya */
     background: linear-gradient(rgba(2, 6, 23, 0.65), rgba(2, 6, 23, 0.95)), url('../images/bg.jpg');
     background-size: cover;
     background-position: center top;
@@ -108,7 +107,7 @@ body {
 .hero-section {
     max-width: 1400px;
     margin: 0 auto;
-    padding: 20px 60px; /* Top padding 30 se 20 kar di */
+    padding: 20px 60px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -226,49 +225,46 @@ body {
     color: #cbd5e1;
     transition: all 0.3s ease;
     text-align: center;
-    text-decoration: none; /* Link underline hatane ke liye */
+    text-decoration: none;
     cursor: pointer;
 }
 
 .tech-item i {
     font-size: 1.4rem;
     color: #38bdf8;
-    transition: all 0.3s ease; /* Icon glow ke liye smooth transition */
+    transition: all 0.3s ease;
 }
 
-/* Hover Effect (Neon Glow) */
 .tech-item:hover {
     background: rgba(30, 41, 59, 0.9);
     border-color: #38bdf8;
-    transform: translateY(-5px); /* Upar uthega */
+    transform: translateY(-5px);
     color: #ffffff;
-    /* Box ke bahar aur andar neon glow */
     box-shadow: 0 0 15px rgba(56, 189, 248, 0.4), inset 0 0 10px rgba(56, 189, 248, 0.1);
 }
 
-/* Icon Hover Effect */
 .tech-item:hover i {
-    /* Icon ke peeche glow effect */
     filter: drop-shadow(0 0 8px #38bdf8);
-    color: #60a5fa; /* Thoda bright blue */
-    transform: scale(1.1); /* Icon thoda bada hoga */
+    color: #60a5fa;
+    transform: scale(1.1);
 }
+
 /* =========================================
-   RIGHT SIDE PHOTO (Full Blend Setup)
+   RIGHT SIDE PHOTO
 ========================================= */
 .hero-right {
     flex: 1;
     display: flex;
-    justify-content: flex-end; /* Photo ko right corner mein push karega */
+    justify-content: flex-end;
     align-items: flex-end;
     position: relative;
     height: 100%;
-    margin-right: -20px; /* Photo ko thoda aur right laane ke liye */
+    margin-right: -20px;
 }
 
 .hero-photo {
     width: 100%;
-    max-width: 750px; /* Photo ka size bada kar diya (pehle 600 tha) */
+    max-width: 750px;
     height: auto;
     z-index: 1;
     position: relative;
@@ -282,11 +278,10 @@ body {
 ========================================= */
 .stats-container {
     width: 100%;
-    padding: 0 60px 15px 60px; /* Bottom padding 20 se 15 kar di */
+    padding: 0 60px 15px 60px;
     z-index: 10;
     margin-top: auto;
 }
-
 
 .stats-bar {
     max-width: 1400px;
@@ -331,44 +326,8 @@ body {
 }
 
 /* =========================================
-   RESPONSIVE
-========================================= */
-@media (max-width: 1200px) {
-    .hero-title { font-size: 3rem; }
-    .hero-photo { max-width: 450px; }
-}
-
-@media (max-width: 992px) {
-    .hero-section {
-        flex-direction: column-reverse;
-        text-align: center;
-        padding: 20px;
-    }
-    .hero-left {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    .hero-buttons { justify-content: center; }
-    .tech-grid { justify-content: center; grid-template-columns: repeat(4, 1fr); }
-    .hero-right { margin-bottom: 30px; }
-    .hero-photo { max-width: 350px; mask-image: none; }
-    .nav-links { display: none; }
-}
-
-@media (max-width: 768px) {
-    .hero-buttons { flex-direction: column; width: 100%; }
-    .btn-primary, .btn-secondary { justify-content: center; }
-    .tech-grid { grid-template-columns: repeat(2, 1fr); }
-    .stats-bar { flex-direction: column; gap: 15px; text-align: center; padding: 20px; }
-    .stat-item { flex-direction: column; gap: 5px; }
-}
-
-/* =========================================
    INNER PAGES DESIGN (Projects, Resume, etc.)
 ========================================= */
-
-/* Main Content Container */
 .main-content {
     max-width: 1200px;
     margin: 0 auto;
@@ -377,7 +336,6 @@ body {
     width: 100%;
 }
 
-/* Headings */
 h1 {
     color: #38bdf8;
     font-size: 2.5rem;
@@ -392,14 +350,12 @@ h2 {
     margin-bottom: 20px;
 }
 
-/* Grid for Cards */
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     gap: 25px;
 }
 
-/* Card Styling (Projects & Apps) */
 .card {
     background: rgba(30, 41, 59, 0.6);
     border: 1px solid rgba(56, 189, 248, 0.2);
@@ -428,7 +384,6 @@ h2 {
     line-height: 1.6;
 }
 
-/* Tags inside Cards */
 .tags {
     display: flex;
     flex-wrap: wrap;
@@ -624,7 +579,6 @@ h2 {
     transition: all 0.3s ease;
 }
 
-/* Android Button */
 .android-btn {
     background: rgba(16, 185, 129, 0.1);
     color: #34d399;
@@ -637,7 +591,6 @@ h2 {
     box-shadow: 0 0 15px rgba(16, 185, 129, 0.3);
 }
 
-/* iOS Button */
 .ios-btn {
     background: rgba(255, 255, 255, 0.1);
     color: #ffffff;
@@ -649,3 +602,116 @@ h2 {
     transform: translateY(-2px);
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
 }
+
+/* =========================================
+   UPDATED MOBILE & TABLET RESPONSIVE DESIGN
+========================================= */
+
+/* Tablets & Small Laptops */
+@media (max-width: 1200px) {
+    .hero-title { font-size: 3rem; }
+    .hero-photo { max-width: 500px; }
+}
+
+@media (max-width: 992px) {
+    .hero-title { font-size: 2.5rem; }
+    .hero-photo { max-width: 400px; }
+    .nav-links { gap: 15px; }
+}
+
+/* Mobile Phones */
+@media (max-width: 768px) {
+    /* Navbar */
+    .nav-container { padding: 0 15px; }
+    .nav-links { display: none; } /* Mobile menu hide */
+    .logo { font-size: 1rem; }
+    .btn-glow { padding: 6px 15px; font-size: 0.8rem; }
+    
+    /* Hero Section */
+    .hero-section {
+        flex-direction: column-reverse; /* Photo upar, text neeche */
+        text-align: center;
+        padding: 20px;
+        gap: 20px;
+    }
+    
+    .hero-left {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .tags-top {
+        font-size: 0.65rem;
+        text-align: center;
+        line-height: 1.5;
+        letter-spacing: 1px;
+    }
+    
+    .hero-title { font-size: 2.2rem; }
+    .hero-subtitle { font-size: 1.1rem; }
+    .hero-desc { font-size: 0.9rem; padding: 0 10px; }
+    
+    /* Buttons */
+    .hero-buttons { 
+        flex-direction: column; 
+        width: 100%; 
+        gap: 15px;
+    }
+    .btn-primary, .btn-secondary { 
+        justify-content: center; 
+        width: 100%;
+    }
+    
+    /* Tech Grid */
+    .tech-grid { 
+        grid-template-columns: repeat(2, 1fr); /* Mobile par 2 columns */
+        width: 100%;
+        gap: 10px;
+    }
+    .tech-item { padding: 10px; font-size: 0.8rem; }
+    
+    /* Photo */
+    .hero-right { 
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-right: 0;
+    }
+    .hero-photo { 
+        max-width: 320px; 
+        mask-image: none; 
+        -webkit-mask-image: none;
+    }
+
+    /* Stats Bar */
+    .stats-container {
+        padding: 0 15px 20px 15px;
+    }
+    .stats-bar { 
+        flex-direction: column; 
+        gap: 15px; 
+        text-align: center; 
+        padding: 20px; 
+    }
+    .stat-item { 
+        flex-direction: column; 
+        gap: 5px; 
+    }
+
+    /* Inner Pages */
+    .main-content {
+        padding: 20px 15px;
+    }
+    h1 { font-size: 1.8rem; }
+    .grid { grid-template-columns: 1fr; }
+    
+    /* Resume */
+    .resume-container { padding: 20px; }
+    .resume-header h1 { font-size: 1.8rem; }
+    .contact-info { display: flex; flex-direction: column; gap: 5px; }
+    
+    /* Footer */
+    .footer { padding: 15px; font-size: 0.8rem; }
+   }
