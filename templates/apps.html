@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Apps - Akash{% endblock %}
+{% block content %}
+<h1>My Apps</h1>
+<div class="grid">
+    {% for a in apps %}
+    <div class="card app-card">
+        <h3>{{ a.name }}</h3>
+        <p>{{ a.desc }}</p>
+
+        <div class="tags">
+            {% for t in a.tech %}<span class="tag">{{ t }}</span>{% endfor %}
+        </div>
+
+        <!-- Download Buttons (Sirf tab dikhenge jab link hoga) -->
+        <div class="app-links">
+            {% if a.apk_link %}
+            <a href="{{ a.apk_link }}" target="_blank" class="btn-download android-btn">
+                <i class="fab fa-android"></i> Download APK
+            </a>
+            {% endif %}
+
+            {% if a.ios_link %}
+            <a href="{{ a.ios_link }}" target="_blank" class="btn-download ios-btn">
+                <i class="fab fa-apple"></i> iOS Link
+            </a>
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

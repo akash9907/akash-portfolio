@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title %}Resume - Akash{% endblock %}
+{% block content %}
+<div class="resume-container">
+    <header class="resume-header">
+        <h1>{{ resume.name }}</h1>
+        <p class="role">{{ resume.title }}</p>
+        <div class="contact-info">
+            <span>📧 {{ resume.email }}</span> |
+            <span>📱 {{ resume.phone }}</span> |
+            <span>📍 {{ resume.location }}</span>
+        </div>
+        <a href="{{ url_for('static', filename='Akash_Paswan.pdf') }}" target="_blank" class="btn-primary" style="margin-top: 15px; display: inline-flex;">
+    <i class="fas fa-download"></i> Download PDF Resume
+</a>
+    </header>
+
+    <section class="resume-section">
+        <h2>About Me</h2>
+        <p>{{ resume.about }}</p>
+    </section>
+
+    <section class="resume-section">
+        <h2>Experience</h2>
+        {% for job in resume.experience %}
+        <div class="job-item">
+            <h3>{{ job.role }} <span class="text-muted">| {{ job.duration }}</span></h3>
+            <h4>{{ job.company }}</h4>
+            <ul>
+                {% for point in job.points %}
+                <li>{{ point }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endfor %}
+    </section>
+
+    <section class="resume-section">
+        <h2>Education</h2>
+        <div class="grid">
+            {% for edu in resume.education %}
+            <div class="card">
+                <h3>{{ edu.degree }}</h3>
+                <p>{{ edu.institute }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section class="resume-section">
+        <h2>Skills</h2>
+        <div class="skills-container">
+            {% for category, skills in resume.skills.items() %}
+            <div class="skill-category">
+                <h3>{{ category }}</h3>
+                <p>{{ skills }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+</div>
+{% endblock %}
