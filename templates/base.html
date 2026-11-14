@@ -19,7 +19,11 @@
                 <a href="/" class="logo">
                     <span class="logo-icon">AK</span> Akash Kumar Paswan
                 </a>
-                <ul class="nav-links">
+                <button class="hamburger" onclick="toggleMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <ul class="nav-links" id="navLinks">
                     <li><a href="/"><i class="fas fa-home"></i> Home</a></li>
                     <li><a href="#"><i class="fas fa-user"></i> About</a></li>
                     <li><a href="#"><i class="fas fa-cogs"></i> Skills</a></li>
@@ -51,5 +55,12 @@
             <p>© 2026 Akash Kumar Paswan. Built with Python & Flask.</p>
         </footer>
     </div>
+<!--    mobile view-->
+    <script>
+        function toggleMenu() {
+            var nav = document.getElementById("navLinks");
+            nav.classList.toggle("active");
+        }
+    </script>
 </body>
 </html>
