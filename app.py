@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request, flash, redirect, url_for
-import os
 
 app = Flask(__name__)
 app.secret_key = 'super_secret_key' # Flash messages ke liye zaroori hai
@@ -109,14 +108,14 @@ APPS = [
         "desc": "Developed an Android and iOS app for employee management, attendance tracking, and KPI-based performance monitoring.",
         "tech": ["Flutter", "Android", "iOS", "Dart"],
         "apk_link": "/static/emptX.apk",       # Yahan apni APK file ka naam dalein
-        "ios_link": "https://testflight.apple.com/..." # Yahan iOS ka link dalein
+        "ios_link": "/static/emptX.apk" # Yahan iOS ka link dalein
     },
     {
         "name": "Smart QA Toolkit (Quality Analytics & Monitoring Web App)",
         "desc": "Developed a Python-based web application for manufacturing quality analysis, production monitoring, defect tracking, and shift-wise performance dashboards.",
         "tech": ["Python", "Streamlit", "Pandas", "Plotly", "Excel", "Data Analytics"],
-        "apk_link": "https://akash-toolkitatli.streamlit.app/",  # Web app hai toh APK nahi hai
-        "ios_link": ""   # Web app hai toh iOS nahi hai
+        "apk_link": "https://apps.akashpaswan.com/",  # Web app hai toh APK nahi hai
+        "ios_link": "https://apps.akashpaswan.com/"   # Web app hai toh iOS nahi hai
     }
 ]
 
