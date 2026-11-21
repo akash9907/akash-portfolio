@@ -1,8 +1,19 @@
 from flask import Flask, render_template, request, flash, redirect, url_for
+from flask_mail import Mail, Message  # Naya import
+import os
 
 app = Flask(__name__)
 app.secret_key = 'super_secret_key' # Flash messages ke liye zaroori hai
 
+# --- Email Configuration ---
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USERNAME'] = 'akashpassi99@gmail.com'  # Aapka Gmail
+app.config['MAIL_PASSWORD'] = os.environ.get('EMAIL_PASSWORD')
+app.config['MAIL_DEFAULT_SENDER'] = 'akashpassi99@gmail.com'
+
+mail = Mail(app)
 # Aapka Resume Data
 RESUME = {
     "name": "Akash Kumar Paswan",
@@ -141,9 +152,20 @@ def contact():
         name = request.form.get('name')
         email = request.form.get('email')
         message = request.form.get('message')
-        # Abhi ke liye hum bas message print karenge console mein
-        print(f"New Message from {name} ({email}): {message}")
-        flash("Thank you! Aapka message send ho gaya hai.", "success")
+
+        try:
+            # Email banayein
+            msg = Message(
+                subject=f"New Portfolio Message from {name}",
+                recipients=['akashpassi99@gmail.com'],  # Jahan message aana chahiye
+                body=f"Name: {name}\nEmail: {email}\n\nMessage:\n{message}"
+            )
+            mail.send(msg)
+            flash("Thank you! Aapka message successfully send ho gaya hai.", "success")
+        except Exception as e:
+            print(e)  # Error terminal mein dikhega
+            flash("Sorry, message send nahi ho paya. Please try again.", "danger")
+
         return redirect(url_for('contact'))
     return render_template('contact.html')
 
