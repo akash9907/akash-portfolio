@@ -1,19 +1,10 @@
 from flask import Flask, render_template, request, flash, redirect, url_for
-from flask_mail import Mail, Message  # Naya import
 import os
+import resend
 
 app = Flask(__name__)
 app.secret_key = 'super_secret_key' # Flash messages ke liye zaroori hai
-
-# --- Email Configuration ---
-app.config['MAIL_SERVER'] = 'smtp.gmail.com'
-app.config['MAIL_PORT'] = 587
-app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = 'akashpassi99@gmail.com'  # Aapka Gmail
-app.config['MAIL_PASSWORD'] = os.environ.get('EMAIL_PASSWORD')
-app.config['MAIL_DEFAULT_SENDER'] = 'akashpassi99@gmail.com'
-
-mail = Mail(app)
+resend.api_key = os.environ.get("RESEND_API_KEY")
 # Aapka Resume Data
 RESUME = {
     "name": "Akash Kumar Paswan",
@@ -146,6 +137,7 @@ def apps():
 def resume():
     return render_template('resume.html', resume=RESUME)
 
+
 @app.route('/contact', methods=['GET', 'POST'])
 def contact():
     if request.method == 'POST':
@@ -154,17 +146,17 @@ def contact():
         message = request.form.get('message')
 
         try:
-            # Email banayein
-            msg = Message(
-                subject=f"New Portfolio Message from {name}",
-                recipients=['akashpassi99@gmail.com'],  # Jahan message aana chahiye
-                body=f"Name: {name}\nEmail: {email}\n\nMessage:\n{message}"
-            )
-            mail.send(msg)
+            # Resend API se email bhejna
+            resend.Emails.send({
+                "from": "onboarding@resend.dev",  # Yeh default testing sender hai
+                "to": "akashpassi99@gmail.com",  # Jahan email aani chahiye
+                "subject": f"New Portfolio Message from {name}",
+                "html": f"<p><strong>Name:</strong> {name}</p><p><strong>Email:</strong> {email}</p><p><strong>Message:</strong><br>{message}</p>"
+            })
             flash("Thank you! Aapka message successfully send ho gaya hai.", "success")
         except Exception as e:
-            print(e)  # Error terminal mein dikhega
-            flash("Sorry, message send nahi ho paya. Please try again.", "danger")
+            print(f"Error: {e}")  # Terminal mein error dikhega
+            flash("Sorry, message send nahi ho paya. Please try again later.", "danger")
 
         return redirect(url_for('contact'))
     return render_template('contact.html')
